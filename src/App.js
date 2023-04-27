@@ -1,9 +1,13 @@
-import Test from "./components/Test";
+import HomeNavbar from "./components/navbar/HomeNavbar";
+import { Outlet } from "react-router-dom";
 function App() {
   return (
-    <div>
-      <Test></Test>
-    </div>
+    <>
+      <HomeNavbar />
+      <div id="detail">
+        <Outlet />
+      </div>
+    </>
   );
 }
 
