@@ -8,15 +8,15 @@ function UserSideNav(props) {
             </button>
             <ul>
                 <li>
-                    <Link to={'/main'}>Home</Link>
+                    <Link to={''}>Home</Link>
                 </li>
                 <li>
-                    <Link to={'/notes'}>Notes</Link>
+                    <Link to={'notes'}>Notes</Link>
                 </li>
                 {
                         props.data.userType?.localeCompare(constants.USER_ROLE.ADMIN)===0 ?
                         <li>
-                            <Link to={'news'}>news</Link>
+                            <Link to={'student/news'}>news</Link>
                         </li>
                         :""
                       }
