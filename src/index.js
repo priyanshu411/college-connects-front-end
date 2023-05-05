@@ -8,10 +8,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Main from './components/student/Main';
-import Test from './components/Test';
+import Notes from './components/student/Notes';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import Student from './components/student/Student';
 
 const router = createBrowserRouter([
   {
@@ -30,12 +30,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path :"main",
-    element:<Main/>
-  },
-  {
-    path :"testApi",
-    element:<Test/>
+    path :"student",
+    element:<Student/>,
+    children:[
+      {
+        path :"notes",
+        element:<Notes/>
+      }
+    ]
   }
 ]);
 
