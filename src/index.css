@@ -106,3 +106,6 @@ nav li a:hover {
 .btn-2:hover {
     background: var(--secondary);
 }
+.login-card{
+    transform: translateY(35%);
+}
