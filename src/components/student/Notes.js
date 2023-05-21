@@ -31,11 +31,10 @@ function Notes() {
           const response = await axios.post(constants.API_URL + '/api/notes/upload', formData, {
             headers: headers
           });
-          event.target.reset();
-          MRef.current.toast({ html:response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
           console.log(response.data);
+        //   MRef.current.toast({ html:response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
         } catch (error) {
-        MRef.current.toast({ html: error.response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
+        // MRef.current.toast({ html: error.response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
           console.error(error);
         }
       }
@@ -52,10 +51,10 @@ function Notes() {
                             <div className="card">
                                 <div className="card-content">
                                     <span className="card-title center align txt-col1">Upload Notes</span>
-                                    <div class="file-field input-field">
+                                    <div className="file-field input-field">
                                         <i className="material-icons prefix">article</i>
                                         <input type="file" required onChange={handleFileChange} />
-                                        <div class="file-path-wrapper ps-5">
+                                        <div className="file-path-wrapper ps-5">
                                             <input className="file-path validate" type="text" placeholder="Upload one or more files" />
                                         </div>
                                     </div>
