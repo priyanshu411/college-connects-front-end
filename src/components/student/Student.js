@@ -1,9 +1,9 @@
-import Main from "./Main";
 import { Outlet } from "react-router-dom";
-function Student() {
+import UserNavBar from "../navbar/UserNavbar";
+function Student(props) {
     return (
         <>
-            <Main />
+            <UserNavBar data={props.data}/>
             <div id="detail">
                 <Outlet />
             </div>
