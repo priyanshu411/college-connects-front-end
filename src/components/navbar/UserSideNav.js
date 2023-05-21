@@ -14,12 +14,15 @@ function UserSideNav(props) {
                     <Link to={'notes'}>Notes</Link>
                 </li>
                 {
-                        props.data.userType?.localeCompare(constants.USER_ROLE.ADMIN)===0 ?
+                    props.data.userType?.localeCompare(constants.USER_ROLE.ADMIN) === 0 ?
                         <li>
                             <Link to={'student/news'}>news</Link>
                         </li>
-                        :""
-                      }
+                        : ""
+                }
+                <li>
+                    <Link onClick={()=>props.logoutHandler()}>Logout</Link>
+                </li>
             </ul>
 
         </div>
