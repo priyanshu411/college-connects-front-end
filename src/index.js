@@ -12,6 +12,7 @@ import Notes from './components/student/Notes';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Student from './components/student/Student';
+import ProtectedRoute from './components/student/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path :"student",
-    element:<Student/>,
+    element:<ProtectedRoute Component={Student}/>,
     children:[
       {
         path :"notes",
