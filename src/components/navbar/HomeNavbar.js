@@ -17,13 +17,13 @@ function HomeNavbar() {
                     <i className="material-icons">menu</i>
                 </a>
                 <div className="nav-wrapper">
-                    <Link className="brand-logo" to={'/'}>College connects</Link>
+                    <Link className="fs-3" to={'/'}>College connects</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>
-                            <Link to={'signUp'}>SignIn</Link>
+                            <Link to={'signUp'}><i className="material-icons left">login</i>SignIn</Link>
                         </li>
                         <li>
-                            <Link to={'login'}>login</Link>
+                            <Link to={'login'}><i className="material-icons left">login</i>login</Link>
                         </li>
                        
                     </ul>
