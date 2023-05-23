@@ -13,13 +13,17 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Student from './components/student/Student';
 import ProtectedRoute from './components/student/ProtectedRoute';
-
+import Home from './components/Home';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element:<App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "",
+        element: <Home></Home>,
+      },
       {
         path: "signUp",
         element: <SignUp />,
