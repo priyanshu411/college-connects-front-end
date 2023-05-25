@@ -14,6 +14,7 @@ import Login from './components/Login';
 import Student from './components/student/Student';
 import ProtectedRoute from './components/student/ProtectedRoute';
 import Home from './components/Home';
+import News from './components/student/News';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
     path :"student",
     element:<ProtectedRoute Component={Student}/>,
     children:[
+      {
+        path :"",
+        element:<News/>
+      },
       {
         path :"notes",
         element:<Notes/>
