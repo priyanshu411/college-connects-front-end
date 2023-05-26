@@ -7,10 +7,19 @@ function HomeSideNav() {
             </button>
             <ul>
                 <li>
-                    <Link to={'signUp'}>Sign Up</Link>
+                    <Link to={''}><i className="material-icons left">home</i>Home</Link>
                 </li>
                 <li>
-                    <Link to={'login'}>login</Link>
+                    <Link to={''}><i className="material-icons left">featured_play_list</i>Features</Link>
+                </li>
+                <li>
+                    <Link to={''}><i className="material-icons left">alternate_email</i>Contact Us</Link>
+                </li>
+                <li>
+                    <Link to={'signUp'}><i className="material-icons left">login</i>Sign Up</Link>
+                </li>
+                <li>
+                    <Link to={'login'}><i className="material-icons left">login</i>login</Link>
                 </li>
 
             </ul>

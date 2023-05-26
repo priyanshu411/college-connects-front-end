@@ -35,6 +35,7 @@ function Home() {
                     </div>
                 </div>
             </main>
+            <h3 className="txt-col1 center-align">Features</h3>
         </>
     );
 }
