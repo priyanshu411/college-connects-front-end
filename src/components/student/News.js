@@ -1,18 +1,22 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import constants from "../../utility/constants";
 import { getDate } from "../../utility/CommonUtility";
 import axios from "axios";
-function News(){
+function News() {
     useEffect(() => {
-        fetchNews(localStorage.getItem("token"));
+        fetchNews(localStorage.getItem("token"),0);
     }, []);
 
 
     const [news, setNews] = useState([]);
 
-    async function fetchNews(token) {
+    function handleDay(days){
+        fetchNews(localStorage.getItem("token"),days);
+    }
+
+    async function fetchNews(token,days) {
         console.log(`Bearer ${token}`);
-        await axios.get(constants.API_URL + "/api/news?date="+getDate(0), {
+        await axios.get(constants.API_URL + "/api/news?date=" + getDate(days), {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -27,12 +31,24 @@ function News(){
     }
 
 
-    return(
+    return (
         <>
-         <section className="container">
-            <h3 className="center-align txt-col1">News</h3>
+            <section className="container">
+                <h3 className="center-align txt-col1">News</h3>
+                <div className="center-align my-3">
+                    <button className="btn waves-effect waves-light btn-1" onClick={()=>handleDay(0)}>Today
+                        
+                    </button>
+                    
+                    <button className="btn waves-effect waves-light btn-1" onClick={()=>handleDay(-1)}>YesterDay
+                      
+                    </button>
+                    <button className="btn waves-effect waves-light btn-1" onClick={()=>handleDay(1)}>Tomorrow
+                      
+                    </button>
+                </div>
                 <div className="row">
-                    {news.length>0 ?
+                    {news.length > 0 ?
                         news.map((data, index) => {
                             return (
                                 <div className="col vh-25 s10 offset-s1 m6 l4" key={index}>
@@ -45,7 +61,7 @@ function News(){
                                 </div>
                             )
                         })
-                        :<p className="center-align fs-3 txt-col2">No recoard found</p>
+                        : <p className="center-align fs-3 txt-col2">No recoard found</p>
                     }
                 </div>
             </section>
