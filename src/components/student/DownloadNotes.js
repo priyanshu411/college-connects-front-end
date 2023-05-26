@@ -34,8 +34,8 @@ function DownloadNotes() {
                             return (
                                 <div className="col s10 offset-s1 m6 l4" key={index}>
                                     <div className="card shadow my-3 mx-2">
-                                        <div className="card-content">
-                                            <span className="card-title txt-col2">{"Subject"}</span>
+                                        <div className="card-content notes-card">
+                                            <span className="card-title txt-col2">{data.subject}</span>
                                             <p>{data.description}</p>
                                         </div>
                                         <div className="center-align">
