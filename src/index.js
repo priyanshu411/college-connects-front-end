@@ -15,6 +15,7 @@ import Student from './components/student/Student';
 import ProtectedRoute from './components/student/ProtectedRoute';
 import Home from './components/Home';
 import News from './components/student/News';
+import UploadNews from './components/student/UploadNews';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path :"notes",
         element:<Notes/>
+      },
+      {
+        path :"news",
+        element:<UploadNews/>
       }
     ]
   }

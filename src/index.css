@@ -110,7 +110,14 @@ nav li a:hover {
     transform: translateY(35%);
 }
 .news-card{
-    min-height: 20vh;
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.notes-card{
+    min-height: 25vh;
     display: flex;
     align-items: center;
     flex-direction: column;
