@@ -1,12 +1,17 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import constants from "../../utility/constants";
-function UploadNotes(){
+function UploadNotes() {
     const MRef = useRef(null);
-    MRef.current = window.M;
+    useEffect(() => {
+        MRef.current = window.M;
+        let elems = document.querySelectorAll('select');
+        MRef.current.FormSelect.init(elems);
+    }, [])
 
     const [file, setFile] = useState(null);
     const [fileDescription, setFileDescription] = useState('');
+    const [subject, setSubject] = useState('');
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
@@ -17,26 +22,31 @@ function UploadNotes(){
 
     async function handleSubmit(event) {
         event.preventDefault();
+        if (subject !== "") {
+            const formData = new FormData();
+            formData.append('notes', file);
+            formData.append('description', fileDescription);
+            formData.append('subject', subject);
 
-        const formData = new FormData();
-        formData.append('notes', file);
-        formData.append('description', fileDescription);
+            const token = localStorage.getItem('token');
+            const headers = {
+                'Authorization': `Bearer ${token}`
+            };
 
-        const token = localStorage.getItem('token');
-        const headers = {
-            'Authorization': `Bearer ${token}`
-        };
-
-        try {
-            const response = await axios.post(constants.API_URL + '/api/notes/upload', formData, {
-                headers: headers
-            });
-            event.target.reset();
-            console.log(response.data);
-              MRef.current.toast({ html:response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
-        } catch (error) {
-            MRef.current.toast({ html: error.response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
-            console.error(error);
+            try {
+                const response = await axios.post(constants.API_URL + '/api/notes/upload', formData, {
+                    headers: headers
+                });
+                event.target.reset();
+                console.log(response.data);
+                MRef.current.toast({ html: response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
+            } catch (error) {
+                MRef.current.toast({ html: error.response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
+                console.error(error);
+            }
+        }
+        else{
+            MRef.current.toast({ html: "Select Subject", classes: 'rounded bg-1', displayLength: 5000 });
         }
     }
 
@@ -59,6 +69,23 @@ function UploadNotes(){
                                         <div className="file-path-wrapper ps-5">
                                             <input className="file-path validate" type="text" placeholder="Upload one or more files" />
                                         </div>
+                                    </div>
+                                    <div className="input-field">
+                                        <i className="material-icons prefix">subject</i>
+                                        <select onChange={(event) => setSubject(event.target.value)}>
+                                            <option value="" selected disabled>Select Subject</option>
+                                            <option value="Hindi">Hindi</option>
+                                            <option value="English">English</option>
+                                            <option value="Physics">Physics</option>
+                                            <option value="Electronics">Electronics</option>
+                                            <option value="DSA">Data Structure</option>
+                                            <option value="DBMS">Database</option>
+                                            <option value="Compiler">autometa & Compiler</option>
+                                            <option value="Electronics">Electronics</option>
+                                            <option value="OS">Operating System</option>
+                                            <option value="Networking">Networking</option>
+                                        </select>
+                                        <label>Subject</label>
                                     </div>
                                     <div className="input-field">
                                         <i className="material-icons prefix">description</i>
