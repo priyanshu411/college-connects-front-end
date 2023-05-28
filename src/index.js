@@ -16,6 +16,7 @@ import ProtectedRoute from './components/student/ProtectedRoute';
 import Home from './components/Home';
 import News from './components/student/News';
 import UploadNews from './components/student/UploadNews';
+import Profile from './components/student/Profile';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path :"news",
         element:<UploadNews/>
+      },
+      {
+        path :"profile",
+        element:<Profile/>
       }
     ]
   }
