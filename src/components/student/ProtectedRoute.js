@@ -9,14 +9,12 @@ function ProtectedRoute(props) {
     const ChildComponent=props.Component;
 
     async function fetchData(token) {
-        console.log(`Bearer ${token}`);
         await axios.get(constants.API_URL + "/api/user", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
         .then((response) => {
-            console.log(response);
             setUserDetails(response.data);
         })
         .catch((error) => {

@@ -15,7 +15,6 @@ function News() {
     }
 
     async function fetchNews(token,days) {
-        console.log(`Bearer ${token}`);
         await axios.get(constants.API_URL + "/api/news?date=" + getDate(days), {
             headers: {
                 Authorization: `Bearer ${token}`
