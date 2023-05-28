@@ -26,7 +26,7 @@ function UserNavBar(props) {
                     <i className="material-icons">menu</i>
                 </a>
                 <div className="nav-wrapper">
-                <Link className="fs-3" to={'/'}><i className="material-icons left">rocket_launch</i><span className="hide-on-small-only">College Connects</span></Link>
+                    <Link className="fs-3" to={'/'}><i className="material-icons left">rocket_launch</i><span className="hide-on-small-only">College Connects</span></Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>
                             <Link to={''}>
@@ -44,12 +44,19 @@ function UserNavBar(props) {
                             props.data.userType?.localeCompare(constants.USER_ROLE.ADMIN) === 0 ?
                                 <li>
                                     <Link to={'news'}>
-                                    <i className="material-icons left">article</i>
+                                        <i className="material-icons left">article</i>
                                         News
-                                        </Link>
+                                    </Link>
                                 </li>
                                 : ""
                         }
+                        <li>
+                            <Link to={'profile'}>
+                                <i className="material-icons left">person</i>
+                                Profile
+                            </Link>
+                        </li>
+
                         <li>
                             <Link onClick={logoutHandler}>
                                 <i className="material-icons left">logout</i>

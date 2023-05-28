@@ -8,6 +8,11 @@ function UserSideNav(props) {
             </button>
             <ul>
                 <li>
+                    <Link to={'profile'}>
+                        Profile
+                    </Link>
+                </li>
+                <li>
                     <Link to={''}>Home</Link>
                 </li>
                 <li>
@@ -21,7 +26,7 @@ function UserSideNav(props) {
                         : ""
                 }
                 <li>
-                    <Link onClick={()=>props.logoutHandler()}>Logout</Link>
+                    <Link onClick={() => props.logoutHandler()}>Logout</Link>
                 </li>
             </ul>
 
