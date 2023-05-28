@@ -42,7 +42,7 @@ function DownloadNotes() {
                                             <a
                                                 className="waves-effect waves-light btn btn-1"
                                                 target="_blank" rel="noreferrer"
-                                                href={"http://localhost:8081/api/notes?fileName="+data.fileName}
+                                                href={constants.API_URL+"/api/notes?fileName="+data.fileName}
                                                 download
                                             >
                                                 <i className="material-icons right">download</i>Download
