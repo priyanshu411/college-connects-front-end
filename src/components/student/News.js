@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import constants from "../../utility/constants";
 import { getDate } from "../../utility/CommonUtility";
 import axios from "axios";
+import Carousel from "../Carousel";
 function News() {
     useEffect(() => {
         fetchNews(localStorage.getItem("token"),0);
@@ -33,6 +34,7 @@ function News() {
 
     return (
         <>
+        <Carousel></Carousel>
             <section className="container">
                 <h3 className="center-align txt-col1">News</h3>
                 <div className="center-align my-3">
