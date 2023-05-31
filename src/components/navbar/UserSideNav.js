@@ -21,7 +21,7 @@ function UserSideNav(props) {
                 {
                     props.data.userType?.localeCompare(constants.USER_ROLE.ADMIN) === 0 ?
                         <li>
-                            <Link to={'student/news'}>news</Link>
+                            <Link to={'news'}>news</Link>
                         </li>
                         : ""
                 }
