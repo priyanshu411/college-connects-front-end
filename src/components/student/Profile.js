@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import constants from "../../utility/constants";
-
+import { Link } from "react-router-dom";
 function Profile() {
     const [user, setUser] = useState({});
 
@@ -63,6 +63,7 @@ function Profile() {
                                 <button className="btn waves-effect waves-light btn-1" type="submit">Edit
                                     <i className="material-icons right">edit</i>
                                 </button>
+                                <Link to="/student/addAlumni" className="waves-effect waves-light btn btn-1"><i className="material-icons left">add</i>Alumini</Link>
                             </div>
                         </div>
                     </div>
