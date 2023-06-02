@@ -56,7 +56,12 @@ function UserNavBar(props) {
                                 Profile
                             </Link>
                         </li>
-
+                        <li>
+                            <Link to={'searchAlumni'}>
+                                <i className="material-icons left">search</i>
+                                Alumni
+                            </Link>
+                        </li>
                         <li>
                             <Link onClick={logoutHandler}>
                                 <i className="material-icons left">logout</i>
