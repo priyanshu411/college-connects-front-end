@@ -17,6 +17,8 @@ import Home from './components/Home';
 import News from './components/student/News';
 import UploadNews from './components/student/UploadNews';
 import Profile from './components/student/Profile';
+import AlumniDetail from './components/student/AlumniDetail';
+import SearchAlumni from './components/student/SearchAlumni';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +58,14 @@ const router = createBrowserRouter([
       {
         path :"profile",
         element:<Profile/>
+      },
+      {
+        path :"addAlumni",
+        element:<AlumniDetail/>
+      },
+      {
+        path :"searchAlumni",
+        element:<SearchAlumni/>
       }
     ]
   }
