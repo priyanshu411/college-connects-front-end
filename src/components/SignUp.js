@@ -84,7 +84,7 @@ function SignUp() {
                   <div className="row">
                     <div className="input-field col s12">
                       <i className="material-icons prefix">phone</i>
-                      <input id="contact" type="number" className="validate" required onChange={(event) => setContact(event.target.value)} />
+                      <input id="contact" type="number" minlength="10" className="validate" required onChange={(event) => setContact(event.target.value)} />
                       <label htmlFor="contact">Contact No.</label>
                     </div>
                     <div className="input-field col s12">
@@ -122,7 +122,7 @@ function SignUp() {
                   <div className="row">
                     <div className="input-field col s12">
                       <i className="material-icons prefix">vpn_key</i>
-                      <input id="password" type="password" className="validate" required onChange={(event) => setPassword(event.target.value)} />
+                      <input id="password" type="password" className="validate" minlength="5" maxLength="8" required onChange={(event) => setPassword(event.target.value)} />
                       <label htmlFor="password">Password</label>
                     </div>
                   </div>
