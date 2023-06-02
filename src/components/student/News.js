@@ -63,7 +63,7 @@ function News() {
                                 </div>
                             )
                         })
-                        : <p className="center-align fs-3 txt-col2">No recoard found</p>
+                        : <p className="center-align fs-3 txt-col2">No record found</p>
                     }
                 </div>
             </section>
