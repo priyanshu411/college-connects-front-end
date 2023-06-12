@@ -19,6 +19,7 @@ import UploadNews from './components/student/UploadNews';
 import Profile from './components/student/Profile';
 import AlumniDetail from './components/student/AlumniDetail';
 import SearchAlumni from './components/student/SearchAlumni';
+import ContactUs from './components/ContactUs';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "contact",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },

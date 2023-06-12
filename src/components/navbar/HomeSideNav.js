@@ -13,7 +13,7 @@ function HomeSideNav() {
                     <Link to={''}><i className="material-icons left">featured_play_list</i>Features</Link>
                 </li>
                 <li>
-                    <Link to={''}><i className="material-icons left">alternate_email</i>Contact Us</Link>
+                    <Link to={'contact'}><i className="material-icons left">alternate_email</i>Contact Us</Link>
                 </li>
                 <li>
                     <Link to={'signUp'}><i className="material-icons left">login</i>Sign Up</Link>

@@ -32,7 +32,7 @@ function HomeNavbar() {
                             <Link to={'login'}><i className="material-icons left">login</i>login</Link>
                         </li>
                         <li>
-                            <Link to={''}><i className="material-icons left">alternate_email</i>Contact Us</Link>
+                            <Link to={'contact'}><i className="material-icons left">alternate_email</i>Contact Us</Link>
                         </li>
                     </ul>
                 </div>
