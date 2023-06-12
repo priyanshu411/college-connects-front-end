@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import constants from "../../utility/constants";
+import Loader from "../Loader";
 function UploadNotes() {
     const MRef = useRef(null);
     useEffect(() => {
@@ -12,6 +13,7 @@ function UploadNotes() {
     const [file, setFile] = useState(null);
     const [fileDescription, setFileDescription] = useState('');
     const [subject, setSubject] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
@@ -23,6 +25,7 @@ function UploadNotes() {
     async function handleSubmit(event) {
         event.preventDefault();
         if (subject !== "") {
+            setLoading(true);
             const formData = new FormData();
             formData.append('notes', file);
             formData.append('description', fileDescription);
@@ -43,9 +46,11 @@ function UploadNotes() {
             } catch (error) {
                 MRef.current.toast({ html: error.response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
                 console.error(error);
+            }finally{
+                setLoading(false);
             }
         }
-        else{
+        else {
             MRef.current.toast({ html: "Select Subject", classes: 'rounded bg-1', displayLength: 5000 });
         }
     }
@@ -94,9 +99,14 @@ function UploadNotes() {
                                     </div>
                                 </div>
                                 <div className="card-action center-align">
-                                    <button className="btn waves-effect waves-light btn-1" type="submit" >Upload
-                                        <i className="material-icons right">file_upload</i>
-                                    </button>
+                                    {
+                                        loading ? <Loader></Loader>
+                                            :
+                                            <button className="btn waves-effect waves-light btn-1" type="submit" >Upload
+                                                <i className="material-icons right">file_upload</i>
+                                            </button>
+                                    }
+
                                 </div>
                             </div>
                         </form>

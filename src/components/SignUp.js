@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import constants from "../utility/constants";
+import Loader from "./Loader";
 function SignUp() {
 
   const MRef = useRef(null);
@@ -18,10 +19,11 @@ function SignUp() {
   const [semester, setSemester] = useState("");
   const [passOutYear, setPassOutYear] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false);
 
   function submitForm(event) {
     event.preventDefault();
+    setLoading(true);
     let formdata = {
       "enrollmentNo": enrollment,
       "userName": name,
@@ -37,6 +39,7 @@ function SignUp() {
     // save data
     axios.post(constants.API_URL + "/api/user/create", formdata)
       .then(response => {
+        setLoading(false);
         console.log(response);
         MRef.current.toast({ html: response.data.message, classes: 'rounded bg-1', displayLength: 5000 });
         event.target.reset();
@@ -49,7 +52,10 @@ function SignUp() {
           MRef.current.toast({ html: error.message, classes: 'rounded bg-1', displayLength: 5000 });
         }
 
-      });
+      }).finally(() => {
+        return setLoading(false);
+      }
+      );
 
   }
 
@@ -127,9 +133,13 @@ function SignUp() {
                     </div>
                   </div>
                   <div className="center-align">
-                    <button className="btn waves-effect waves-light btn-1" type="submit" >Submit
-                      <i className="material-icons right">send</i>
-                    </button>
+                    {
+                      loading ? <Loader></Loader>
+                        : <button className="btn waves-effect waves-light btn-1" type="submit" >Submit
+                          <i className="material-icons right">send</i>
+                        </button>
+                    }
+
                   </div>
                 </div>
               </div>

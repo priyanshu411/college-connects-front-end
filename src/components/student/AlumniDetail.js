@@ -1,6 +1,7 @@
-import { useState,useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import constants from "../../utility/constants";
+import Loader from "../Loader";
 function AlumniDetail() {
 
     const MRef = useRef(null);
@@ -15,10 +16,12 @@ function AlumniDetail() {
     const [linkedIn, setLinkedIn] = useState();
     const [resume, setResume] = useState();
     const [portfolio, setportfolio] = useState();
+    const [loading, setLoading] = useState(false);
 
 
     function submitDetail(event) {
         event.preventDefault();
+        setLoading(true);
         let alumniData = {
             "company": company,
             "resumeUrl": resume,
@@ -48,7 +51,11 @@ function AlumniDetail() {
                     MRef.current.toast({ html: error.message, classes: 'rounded bg-1', displayLength: 5000 });
                 }
 
-            });
+            }).finally(() => {
+                setLoading(false);
+            }
+
+            );
 
     }
 
@@ -61,7 +68,7 @@ function AlumniDetail() {
                             <div className="card">
                                 <div className="card-content">
                                     <span className="card-title center align txt-col1">Alumni details</span>
-                                    
+
                                     <div className="input-field">
                                         <i className="material-icons prefix">apartment</i>
                                         <input id="company" type="text" className="validate" onChange={(event) => setCompany(event.target.value)} />
@@ -89,9 +96,13 @@ function AlumniDetail() {
                                     </div>
                                 </div>
                                 <div className="card-action center-align">
-                                    <button className="btn waves-effect waves-light btn-1" type="submit" >Submit
-                                        <i className="material-icons right">send</i>
-                                    </button>
+                                    {
+                                        loading ? <Loader></Loader> :
+                                            <button className="btn waves-effect waves-light btn-1" type="submit" >Submit
+                                                <i className="material-icons right">send</i>
+                                            </button>
+                                    }
+
                                 </div>
                             </div>
                         </form>

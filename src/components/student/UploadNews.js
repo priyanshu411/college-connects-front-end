@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import constants from "../../utility/constants";
+import Loader from "../Loader";
 function UploadNews() {
     const MRef = useRef(null);
     useEffect(() => {
@@ -15,12 +16,13 @@ function UploadNews() {
     const [course, setCourse] = useState('');
     const [semester, setSemester] = useState('');
     const [date, setDate] = useState('');
+    const [loading, setLoading] = useState(false);
 
 
     function uploadNews(event) {
         event.preventDefault();
         if (course !== "" && semester !== "") {
-
+            setLoading(true);
             let newsdata = {
                 "newsTittle": tittle,
                 "newsDetail": description,
@@ -49,7 +51,10 @@ function UploadNews() {
                         MRef.current.toast({ html: error.message, classes: 'rounded bg-1', displayLength: 5000 });
                     }
 
-                });
+                }).finally(() => {
+                    setLoading(false);
+                }
+                );
         } else {
             MRef.current.toast({ html: "Please select course or semester", classes: 'rounded bg-1', displayLength: 5000 });
         }
@@ -107,9 +112,13 @@ function UploadNews() {
                                     </div>
                                 </div>
                                 <div className="card-action center-align">
-                                    <button className="btn waves-effect waves-light btn-1" type="submit" >Upload
-                                        <i className="material-icons right">upload</i>
-                                    </button>
+                                    {
+                                        loading ? <Loader></Loader> :
+                                            <button className="btn waves-effect waves-light btn-1" type="submit" >Upload
+                                                <i className="material-icons right">upload</i>
+                                            </button>
+                                    }
+
                                 </div>
                             </div>
                         </form>
